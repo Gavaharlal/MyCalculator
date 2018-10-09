@@ -12,10 +12,10 @@ import net.objecthunter.exp4j.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    final int defaultBlueColor = Color.argb(255, 225, 231, 253);
-    final int onClickBlueColor = Color.argb(255, 212, 221, 255);
-    final int defaultRedColor = Color.argb(255, 253, 225, 225);
-    final int onClickRedColor = Color.argb(255, 255, 205, 205);
+    final int DEFAULT_BLUE_COLOR = Color.argb(255, 225, 231, 253);
+    final int ON_CLICK_BLUE_COLOR = Color.argb(255, 212, 221, 255);
+    final int DEFAULT_RED_COLOR = Color.argb(255, 253, 225, 225);
+    final int ON_CLICK_RED_COLOR = Color.argb(255, 255, 205, 205);
     final int MAX_EXPRESSION_LENGTH = 40;
 
     TextView b1;
@@ -76,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         if (expressionText.length() < MAX_EXPRESSION_LENGTH) {
-                            expressionText.append(getSymbFromView(v));
+                            expressionText.append(getSymbolFromView(v));
                         }
-                        v.setBackgroundColor(onClickBlueColor);
+                        v.setBackgroundColor(ON_CLICK_BLUE_COLOR);
                         break;
                     case MotionEvent.ACTION_UP:
 
-                        v.setBackgroundColor(defaultBlueColor);
+                        v.setBackgroundColor(DEFAULT_BLUE_COLOR);
                         v.performClick();
                         break;
                 }
@@ -97,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         if (expressionText.length() < MAX_EXPRESSION_LENGTH) {
-                            expressionText.append(getSymbFromView(v));
+                            expressionText.append(getSymbolFromView(v));
                         }
-                        v.setBackgroundColor(onClickRedColor);
+                        v.setBackgroundColor(ON_CLICK_RED_COLOR);
                         break;
                     case MotionEvent.ACTION_UP:
 
-                        v.setBackgroundColor(defaultRedColor);
+                        v.setBackgroundColor(DEFAULT_RED_COLOR);
                         v.performClick();
                         break;
                 }
@@ -126,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
         bRightBracket.setOnTouchListener(onBlueTouchListener);
         bDot.setOnTouchListener(onBlueTouchListener);
 
-
         bPlus.setOnTouchListener(onRedTouchListener);
         bMinus.setOnTouchListener(onRedTouchListener);
         bMul.setOnTouchListener(onRedTouchListener);
@@ -141,11 +140,11 @@ public class MainActivity extends AppCompatActivity {
                         if (expressionText.length() > 0) {
                             expressionText.setText(expressionText.getText().toString().substring(0, expressionText.length() - 1));
                         }
-                        v.setBackgroundColor(onClickRedColor);
+                        v.setBackgroundColor(ON_CLICK_RED_COLOR);
                         break;
                     case MotionEvent.ACTION_UP:
 
-                        v.setBackgroundColor(defaultRedColor);
+                        v.setBackgroundColor(DEFAULT_RED_COLOR);
                         v.performClick();
                         break;
                 }
@@ -159,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
 
-                        v.setBackgroundColor(onClickBlueColor);
+                        v.setBackgroundColor(ON_CLICK_BLUE_COLOR);
 
                         try {
                             Expression e = new ExpressionBuilder(expressionText.getText().toString()).build();
@@ -171,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case MotionEvent.ACTION_UP:
 
-                        v.setBackgroundColor(defaultBlueColor);
+                        v.setBackgroundColor(DEFAULT_BLUE_COLOR);
                         v.performClick();
                         break;
                 }
@@ -181,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private static String getSymbFromView(View v) {
+    private static String getSymbolFromView(View v) {
         switch (v.getId()) {
             case R.id.B0:
                 return "0";
