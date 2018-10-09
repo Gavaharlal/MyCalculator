@@ -146,7 +146,6 @@
             android:layout_column="3"
             android:text=" + " />
 
-
     </GridLayout>
 
 </android.support.constraint.ConstraintLayout>
